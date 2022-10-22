@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 
 	Glyph glyph(c, 1);
 
-	// initialize
+	// Draw
 	disp.clear(col[true].r / 255.0, col[true].g / 255.0, col[true].b / 255.0, 1);
 
 	glyph.draw();
