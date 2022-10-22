@@ -54,7 +54,7 @@ bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 }
 
 int main(int argc, char* argv[]) {
-	Disp disp("asdf", 100, 100);
+	Disp disp("Glyph texture generator", 100, 100);
 
 	if (argc != 2) {
 		std::cout << "Error: Wrong number of arguments" << std::endl;
