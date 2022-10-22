@@ -19,7 +19,7 @@ bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 	SDL_Surface* surfSave = NULL;
 	SDL_Surface* surfInfo = NULL;
 	surfInfo = SDL_GetWindowSurface(win);
-	if (surfInfo == NULL) {
+	if (!surfInfo) {
 		std::cerr << "Failed to create info surface from window in save(string), SDL_GetError() - " << SDL_GetError() << std::endl;
 	} else {
 		unsigned char* pixels = new (std::nothrow) unsigned char[surfInfo->w * surfInfo->h * surfInfo->format->BytesPerPixel];
@@ -37,7 +37,7 @@ bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 			} else {
 				surfSave = SDL_CreateRGBSurfaceFrom(pixels, surfInfo->w, surfInfo->h, surfInfo->format->BitsPerPixel, surfInfo->w * surfInfo->format->BytesPerPixel, surfInfo->format->Rmask, surfInfo->format->Gmask, surfInfo->format->Bmask, surfInfo->format->Amask);
 
-				if (surfSave == NULL) {
+				if (!surfSave) {
 					std::cerr << "Couldn't create SDL_Surface from renderer pixel data. SDL_GetError() - " << SDL_GetError() << std::endl;
 
 					delete[] pixels;
