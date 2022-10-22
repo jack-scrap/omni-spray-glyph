@@ -20,16 +20,16 @@ bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 	SDL_Surface* surfInfo = NULL;
 	surfInfo = SDL_GetWindowSurface(win);
 	if (surfInfo == NULL) {
-		std::cerr << "Failed to create info surface from window in save(string), SDL_GetError() - " << SDL_GetError() << "\n";
+		std::cerr << "Failed to create info surface from window in save(string), SDL_GetError() - " << SDL_GetError() << std::endl;
 	} else {
 		unsigned char* pixels = new (std::nothrow) unsigned char[surfInfo->w * surfInfo->h * surfInfo->format->BytesPerPixel];
 		if (!pixels) {
-			std::cerr << "Unable to allocate memory for screenshot pixel data buffer!\n";
+			std::cerr << "Unable to allocate memory for screenshot pixel data buffer!" << std::endl;
 
 			return false;
 		} else {
 			if (SDL_RenderReadPixels(rend, &surfInfo->clip_rect, surfInfo->format->format, pixels, surfInfo->w * surfInfo->format->BytesPerPixel) != 0) {
-				std::cerr << "Failed to read pixel data from SDL_Renderer object. SDL_GetError() - " << SDL_GetError() << "\n";
+				std::cerr << "Failed to read pixel data from SDL_Renderer object. SDL_GetError() - " << SDL_GetError() << std::endl;
 
 				delete[] pixels;
 
@@ -38,7 +38,7 @@ bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 				surfSave = SDL_CreateRGBSurfaceFrom(pixels, surfInfo->w, surfInfo->h, surfInfo->format->BitsPerPixel, surfInfo->w * surfInfo->format->BytesPerPixel, surfInfo->format->Rmask, surfInfo->format->Gmask, surfInfo->format->Bmask, surfInfo->format->Amask);
 
 				if (surfSave == NULL) {
-					std::cerr << "Couldn't create SDL_Surface from renderer pixel data. SDL_GetError() - " << SDL_GetError() << "\n";
+					std::cerr << "Couldn't create SDL_Surface from renderer pixel data. SDL_GetError() - " << SDL_GetError() << std::endl;
 
 					delete[] pixels;
 
