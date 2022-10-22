@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
 
 	disp.update();
 
-	std::string path = std::string(std::string("o/") + std::string(1, c) + ".bmp");
+	std::string path = std::string("o/") + std::string(1, c) + ".bmp";
 
 	if (!scr(path.c_str(), disp.win, disp.rend)) {
 		std::cout << "Error: Couldn't save renderbuffer" << std::endl;
