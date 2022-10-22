@@ -17,8 +17,7 @@
 
 bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 	SDL_Surface* surfSave = NULL;
-	SDL_Surface* surfInfo = NULL;
-	surfInfo = SDL_GetWindowSurface(win);
+	SDL_Surface* surfInfo = SDL_GetWindowSurface(win);
 	if (!surfInfo) {
 		std::cerr << "Failed to create info surface from window in save(string), SDL_GetError() - " << SDL_GetError() << std::endl;
 	} else {
