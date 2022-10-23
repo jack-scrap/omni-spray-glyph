@@ -15,20 +15,24 @@
 #include "layout.h"
 #include "glyph.h"
 
+void err(std::string msg) {
+	std::cerr << "Error: " << msg << std::endl;
+}
+
 bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 	SDL_Surface* surfSave = NULL;
 	SDL_Surface* surfInfo = SDL_GetWindowSurface(win);
 	if (!surfInfo) {
-		std::cerr << "Failed to create info surface from window in save(string), SDL_GetError() - " << SDL_GetError() << std::endl;
+		err(std::string("Failed to create info surface from window in save(string), SDL_GetError() - " ) + SDL_GetError());
 	} else {
 		unsigned char* pix[surfInfo->w * surfInfo->h * surfInfo->format->BytesPerPixel];
 		if (!pix) {
-			std::cerr << "Unable to allocate memory for screenshot pixel data buffer!" << std::endl;
+			err("Unable to allocate memory for screenshot pixel data buffer!");
 
 			return false;
 		} else {
 			if (SDL_RenderReadPixels(rend, &surfInfo->clip_rect, surfInfo->format->format, pix, surfInfo->w * surfInfo->format->BytesPerPixel) != 0) {
-				std::cerr << "Failed to read pixel data from SDL_Renderer object. SDL_GetError() - " << SDL_GetError() << std::endl;
+				err(std::string("Failed to read pixel data from SDL_Renderer object. SDL_GetError() - " )+ SDL_GetError());
 
 				return false;
 			} else {
@@ -36,6 +40,7 @@ bool scr(std::string path, SDL_Window* win, SDL_Renderer* rend) {
 
 				if (!surfSave) {
 					std::cerr << "Couldn't create SDL_Surface from renderer pixel data. SDL_GetError() - " << SDL_GetError() << std::endl;
+					err(std::string("Failed to read pixel data from SDL_Renderer object. SDL_GetError() - " )+ SDL_GetError());
 
 					return false;
 				}
@@ -57,13 +62,13 @@ int main(int argc, char* argv[]) {
 	Disp disp("Glyph texture generator", 100, 100);
 
 	if (argc != 2) {
-		std::cout << "Error: Wrong number of arguments" << std::endl;
+		err("Wrong number of arguments");
 
 		return 1;
 	}
 
 	if (strlen(argv[1]) > 1) {
-		std::cout << "Error: Length of argument longer than one" << std::endl;
+		err("Length of argument longer than one");
 
 		return 1;
 	}
@@ -82,6 +87,6 @@ int main(int argc, char* argv[]) {
 	std::string path = std::string("o/") + std::string(1, c) + ".bmp";
 
 	if (!scr(path.c_str(), disp.win, disp.rend)) {
-		std::cout << "Error: Couldn't save renderbuffer" << std::endl;
+		err("Couldn't save renderbuffer");
 	}
 }
