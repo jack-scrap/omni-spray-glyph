@@ -5,7 +5,7 @@
 #include "glyph.h"
 
 Glyph::Glyph(char c, unsigned int i) :
-	_prog("shad", "shad") {
+	_prog("main", "solid") {
 		std::string name = util::glyphName(c);
 
 		// data
