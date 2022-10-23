@@ -15,6 +15,10 @@
 #include "layout.h"
 #include "glyph.h"
 
+const std::string pathSep = "/";
+
+const std::string oDir = "o";
+
 void err(std::string msg) {
 	std::cerr << "Error: " << msg << std::endl;
 }
@@ -84,7 +88,7 @@ int main(int argc, char* argv[]) {
 
 	disp.update();
 
-	std::string path = std::string("o/") + std::string(1, c) + ".bmp";
+	std::string path = oDir + pathSep + std::string(1, c) + ".bmp";
 
 	if (!scr(path.c_str(), disp.win, disp.rend)) {
 		err("Couldn't save renderbuffer");
