@@ -2,10 +2,10 @@
 
 for c in {a..z}
 do
-	./a.out "$c"
+	./omni_spray_glyph "$c"
 done
 
 for c in {0..9}
 do
-	./a.out "$c"
+	./omni_spray_glyph "$c"
 done
