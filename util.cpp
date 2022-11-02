@@ -241,6 +241,11 @@ std::string util::glyphName(char c) {
 
 				break;
 
+			case '\\':
+				name = "back_slash";
+
+				break;
+
 			case ']':
 				name = "sq_bracket_r";
 
