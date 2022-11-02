@@ -37,6 +37,10 @@ mk_o:
 install:
 	cp omni_spray_glyph $(BINDIR)
 
+.PHONY: uninstall
+uninstall:
+	rm $(BINDIR)/omni_spray_glyph 
+
 .PHONY: clean
 clean:
 	rm $(BUILDDIR)/*.o omni_spray_glyph
