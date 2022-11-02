@@ -116,6 +116,11 @@ std::string util::glyphName(char c) {
 		name = std::string(1, c);
 	} else {
 		switch (c) {
+			case '\t':
+				name = "tab";
+
+				break;
+
 			case ' ':
 				name = "spc";
 
