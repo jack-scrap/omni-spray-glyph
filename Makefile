@@ -35,7 +35,7 @@ mk_o:
 
 .PHONY: install
 install:
-	sudo cp omni_spray_glyph $(BINDIR)
+	cp omni_spray_glyph $(BINDIR)
 
 .PHONY: clean
 clean:
