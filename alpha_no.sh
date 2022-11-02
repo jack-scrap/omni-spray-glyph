@@ -1,11 +1,11 @@
 #!/bin/bash
 
-for c in {a..z}
+for C in {a..z}
 do
-	./omni_spray_glyph "$c"
+	./omni_spray_glyph "$C"
 done
 
-for c in {0..9}
+for C in {0..9}
 do
-	./omni_spray_glyph "$c"
+	./omni_spray_glyph "$C"
 done
